@@ -37,7 +37,7 @@ public class SearchResultActivity extends AppCompatActivity
     /**
      * Default Search word.
      */
-    String search_word = "bike";
+    String search_word = "Android";
 
 
     private static final int LOADER_ID = 1;
@@ -114,7 +114,7 @@ public class SearchResultActivity extends AppCompatActivity
         Uri baseUri = Uri.parse(GOOGLE_API_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("q", search_word);
-        uriBuilder.appendQueryParameter("limit", "3");
+        uriBuilder.appendQueryParameter("maxResults", "");
         return new BookLoader(this, uriBuilder.toString());
     }
 
