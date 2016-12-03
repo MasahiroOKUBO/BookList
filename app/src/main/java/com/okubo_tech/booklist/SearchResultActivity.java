@@ -32,7 +32,12 @@ public class SearchResultActivity extends AppCompatActivity
      * URL for earthquake data from the USGS dataset
      */
     private static final String GOOGLE_API_URL =
-            "https://www.googleapis.com/books/v1/volumes?q=android&maxResults=1";
+            "https://www.googleapis.com/books/v1/volumes";
+
+    /**
+     * Default Search word.
+     */
+    String search_word = "bike";
 
 
     private static final int LOADER_ID = 1;
@@ -55,7 +60,7 @@ public class SearchResultActivity extends AppCompatActivity
 
         // Display Search word.
         Intent i = getIntent();
-        String search_word = i.getStringExtra("search_word");
+        search_word = i.getStringExtra("search_word");
         TextView searchWordView = (TextView) findViewById(R.id.your_search_word);
         searchWordView.setText(search_word);
 
@@ -105,9 +110,11 @@ public class SearchResultActivity extends AppCompatActivity
 
     @Override
     public Loader<List<Book>> onCreateLoader(int i, Bundle bundle) {
+
         Uri baseUri = Uri.parse(GOOGLE_API_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
-
+        uriBuilder.appendQueryParameter("q", search_word);
+        uriBuilder.appendQueryParameter("limit", "3");
         return new BookLoader(this, uriBuilder.toString());
     }
 

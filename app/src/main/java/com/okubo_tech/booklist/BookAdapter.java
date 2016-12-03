@@ -1,8 +1,6 @@
 package com.okubo_tech.booklist;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +30,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
      * Constructs a new {@link BookAdapter}.
      *
      * @param context of the app
-     * @param books   is the list of earthquakes, which is the data source of the adapter
+     * @param books
      */
     public BookAdapter(Context context, List<Book> books) {
         super(context, 0, books);

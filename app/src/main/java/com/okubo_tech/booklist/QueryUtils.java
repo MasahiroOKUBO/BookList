@@ -185,10 +185,6 @@ public final class QueryUtils {
             Log.e("QueryUtils", "Problem parsing the Books JSON results", e);
         }
 
-        Book book = new Book("test", "test", "test");
-        // Add the new {@link Book} to the list of Books.
-        books.add(book);
-
         // Return the list of books
         return books;
     }
