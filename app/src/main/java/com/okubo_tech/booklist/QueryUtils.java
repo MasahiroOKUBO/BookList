@@ -167,13 +167,7 @@ public final class QueryUtils {
 
 
                 // extract authors of the book.
-                JSONArray authorsJsonArray = volumeInfo.getJSONArray("authors");
-                String book_authors = "";
-                for(int j=0;j<authorsJsonArray.length();j++) {
-                    String author = authorsJsonArray.getString(j);
-                    book_authors = author;
-                }
-                book_authors = "test";
+                String book_authors = volumeInfo.getString("publisher");
 
                 // extract description of the book.
                 String book_description = volumeInfo.getString("description");
