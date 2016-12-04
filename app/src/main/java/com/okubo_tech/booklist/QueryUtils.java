@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -167,7 +168,14 @@ public final class QueryUtils {
 
 
                 // extract authors of the book.
-                String book_authors = volumeInfo.getString("publisher");
+                String book_authors = "";
+                JSONArray authorsArray = volumeInfo.getJSONArray("authors");
+                Log.v("JSON", "Received "+ authorsArray);
+                if (authorsArray.length() > 0) {
+                    for (int j = 0; j < authorsArray.length() ; j++) {
+                        book_authors += authorsArray.getString(j);
+                    }
+                }
 
                 // extract description of the book.
                 String book_description = volumeInfo.getString("description");
