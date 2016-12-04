@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.okubo_tech.booklist.R.id.search_word;
 
 public class SearchResultActivity extends AppCompatActivity
         implements LoaderCallbacks<List<Book>> {
@@ -34,11 +37,7 @@ public class SearchResultActivity extends AppCompatActivity
     private static final String GOOGLE_API_URL =
             "https://www.googleapis.com/books/v1/volumes";
 
-    /**
-     * Default Search word.
-     */
-    String search_word = "Android";
-
+    private String search_word = "";
 
     private static final int LOADER_ID = 1;
 
@@ -59,13 +58,18 @@ public class SearchResultActivity extends AppCompatActivity
         setContentView(R.layout.activity_search_result);
 
         // Display Search word.
-        Intent i = getIntent();
-        search_word = i.getStringExtra("search_word");
+        search_word = getIntent().getStringExtra("search_word");
         TextView searchWordView = (TextView) findViewById(R.id.your_search_word);
         searchWordView.setText(search_word);
 
         // Find a reference to the {@link ListView} in the layout
         ListView bookListView = (ListView) findViewById(R.id.book_list_view);
+
+//        /**
+//         * add headerview. not use. use fix header.
+//         */
+//        View header = getLayoutInflater().inflate(R.layout.list_item_header, null);
+//        bookListView.addHeaderView(header);
 
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         bookListView.setEmptyView(mEmptyStateTextView);

@@ -169,17 +169,22 @@ public final class QueryUtils {
 
                 // extract authors of the book.
                 String book_authors = "";
-                JSONArray authorsArray = volumeInfo.getJSONArray("authors");
-                Log.v("JSON", "Received "+ authorsArray);
-                if (authorsArray.length() > 0) {
-                    for (int j = 0; j < authorsArray.length() ; j++) {
-                        book_authors += authorsArray.getString(j);
+                if (volumeInfo.has("authors")) {
+                    JSONArray authorsArray = volumeInfo.getJSONArray("authors");
+                    Log.v("JSON", "Received " + authorsArray);
+                    if (authorsArray.length() > 0) {
+                        for (int j = 0; j < authorsArray.length(); j++) {
+                            book_authors += authorsArray.getString(j) + ',';
+                        }
                     }
                 }
 
                 // extract description of the book.
-                String book_description = volumeInfo.getString("description");
+                String book_description = "";
 
+                if (volumeInfo.has("description")) {
+                    book_description = volumeInfo.getString("description");
+                }
 
                 Book book = new Book(book_title, book_authors, book_description);
                 // Add the new {@link Book} to the list of Books.

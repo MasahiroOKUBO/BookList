@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Search Word ?"/>
+        android:text="Input Search Word."/>
 
     <EditText
         android:id="@+id/search_word"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:layout_marginBottom="16dp"
-        android:hint="Android" />
+        android:hint="ex) Excel , Android" />
 
 
     <Button
