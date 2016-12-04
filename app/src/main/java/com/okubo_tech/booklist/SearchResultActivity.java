@@ -114,7 +114,7 @@ public class SearchResultActivity extends AppCompatActivity
         Uri baseUri = Uri.parse(GOOGLE_API_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("q", search_word);
-        uriBuilder.appendQueryParameter("maxResults", "10");
+//        uriBuilder.appendQueryParameter("maxResults", "10");
         return new BookLoader(this, uriBuilder.toString());
     }
 
